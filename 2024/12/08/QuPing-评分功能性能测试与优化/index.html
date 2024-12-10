@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gopunny.com/images/post/quping.png">
 <meta property="article:published_time" content="2024-12-08T14:37:16.000Z">
-<meta property="article:modified_time" content="2024-12-10T14:36:39.549Z">
+<meta property="article:modified_time" content="2024-12-10T14:44:12.200Z">
 <meta property="article:author" content="Punny">
 <meta property="article:tag" content="BUG">
 <meta property="article:tag" content="QuPing">
@@ -337,6 +337,8 @@
 <p><img src="https://cdn.yunjiujiu.xyz/blogimages/image-20241210222940029.png" srcset="/img/loading.gif" lazyload alt="image-20241210222940029"></p>
 <p>最终5000次的结果发现平均才464ms，整体提升了80%!!!</p>
 <p>并且也是0异常数据库结果符合预期。</p>
+<p>后续又跑了1w次并且不断修改请全体改变评分，平均在350ms左右。</p>
+<p>测试还是不太全面，但是总的还是有些提升。</p>
 <h2 id="途中遇到的BUG"><a href="#途中遇到的BUG" class="headerlink" title="途中遇到的BUG"></a>途中遇到的BUG</h2><p>一开始我打算先试试就正常从数据库中拿数据然后修改并更新，为了防止出错，我加上了事务注解@Transactional，还有为了防止并发的synchronized来修饰整个doRating方法</p>
 <p>结果测了几次还是会有并发问题，就是评分项的评分count总是小于实际的请求数。</p>
 <p>但是我明明加了synchronized啊？这就很奇怪了，后面陆续从请求是否全部到达、数据库执行是否有出错的，synchronized锁对象等这方面排查，但是都是正常的。后面无意把@Transactional注解去掉后，才得以解决。</p>
