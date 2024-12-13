@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          716 字
+          715 字
         
       </span>
     
@@ -285,12 +285,36 @@
 <p><code>create_time</code>类型为timestamp默认为null</p>
 <p><code>update_time</code>类型为timestamp默认为null</p>
 <p>然后给对应实体类中添加对应属性字段：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@TableField(fill = FieldFill.INSERT)</span><br><span class="hljs-keyword">private</span> LocalDateTime createTime;<br><span class="hljs-meta">@TableField(fill = FieldFill.INSERT_UPDATE)</span><br><span class="hljs-keyword">private</span> LocalDateTime updateTime;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@TableField(fill = FieldFill.INSERT)</span>
+<span class="hljs-keyword">private</span> LocalDateTime createTime;
+<span class="hljs-meta">@TableField(fill = FieldFill.INSERT_UPDATE)</span>
+<span class="hljs-keyword">private</span> LocalDateTime updateTime;</code></pre></div>
 
 <p>使用@TableField注解，指定自动填充的类型，比如FieldFill.INSERT表示在插入的时候自动填充</p>
 <p>FieldFill.INSERT_UPDATE在插入和删除的时候填充等</p>
 <p>创建一个Handler实现MetaObjectHandler接口重写insertFill、updateFill方法在里面实现自己的填充逻辑</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Component</span><br><span class="hljs-meta">@Slf4j</span><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 默认的自动填充策略：</span><br><span class="hljs-comment"> * 如果已经存在了值，则不填充</span><br><span class="hljs-comment"> * 如果填充的值为null也不填充</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FieldAutoFillHandler</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">MetaObjectHandler</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insertFill</span><span class="hljs-params">(MetaObject metaObject)</span> &#123;<br>        log.info(<span class="hljs-string">&quot;执行插入填充...&quot;</span>);<br>        <span class="hljs-built_in">this</span>.strictInsertFill(metaObject, <span class="hljs-string">&quot;createTime&quot;</span>, LocalDateTime.class, LocalDateTime.now());<br>        <span class="hljs-built_in">this</span>.strictUpdateFill(metaObject, <span class="hljs-string">&quot;updateTime&quot;</span>, LocalDateTime.class, LocalDateTime.now());<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">updateFill</span><span class="hljs-params">(MetaObject metaObject)</span> &#123;<br>        log.info(<span class="hljs-string">&quot;执行更新填充...&quot;</span>);<br>        <span class="hljs-built_in">this</span>.setFieldValByName(<span class="hljs-string">&quot;updateTime&quot;</span>, LocalDateTime.now(), metaObject);<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Component</span>
+<span class="hljs-meta">@Slf4j</span>
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * 默认的自动填充策略：</span>
+<span class="hljs-comment"> * 如果已经存在了值，则不填充</span>
+<span class="hljs-comment"> * 如果填充的值为null也不填充</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">FieldAutoFillHandler</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">MetaObjectHandler</span> &#123;
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insertFill</span><span class="hljs-params">(MetaObject metaObject)</span> &#123;
+        log.info(<span class="hljs-string">&quot;执行插入填充...&quot;</span>);
+        <span class="hljs-built_in">this</span>.strictInsertFill(metaObject, <span class="hljs-string">&quot;createTime&quot;</span>, LocalDateTime.class, LocalDateTime.now());
+        <span class="hljs-built_in">this</span>.strictUpdateFill(metaObject, <span class="hljs-string">&quot;updateTime&quot;</span>, LocalDateTime.class, LocalDateTime.now());
+    &#125;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">updateFill</span><span class="hljs-params">(MetaObject metaObject)</span> &#123;
+        log.info(<span class="hljs-string">&quot;执行更新填充...&quot;</span>);
+        <span class="hljs-built_in">this</span>.setFieldValByName(<span class="hljs-string">&quot;updateTime&quot;</span>, LocalDateTime.now(), metaObject);
+    &#125;
+
+&#125;</code></pre></div>
 
 <p>之后在更新或者删除的时候就可以实现自动填充</p>
 <h2 id="自动填充出现失效"><a href="#自动填充出现失效" class="headerlink" title="自动填充出现失效"></a>自动填充出现失效</h2><p>正常一般这样配置后就可以用了，但是有些原因可能会导致失效，以及一些注意事项。</p>
