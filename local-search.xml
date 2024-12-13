@@ -20,6 +20,8 @@
     
     <tags>
       
+      <tag>BUG</tag>
+      
       <tag>QuPing</tag>
       
       <tag>测试</tag>
@@ -29,8 +31,6 @@
       <tag>高并发</tag>
       
       <tag>性能优化</tag>
-      
-      <tag>BUG</tag>
       
     </tags>
     
@@ -55,9 +55,9 @@
     
     <tags>
       
-      <tag>BUG</tag>
-      
       <tag>Mypatis-Plus</tag>
+      
+      <tag>BUG</tag>
       
     </tags>
     
