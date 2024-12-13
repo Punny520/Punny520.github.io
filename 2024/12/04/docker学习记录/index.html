@@ -293,96 +293,44 @@
 <ul>
 <li>卸载旧版</li>
 </ul>
-<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> yum remove docker \
-                  docker-client \
-                  docker-client-latest \
-                  docker-common \
-                  docker-latest \
-                  docker-latest-logrotate \
-                  docker-logrotate \
-                  docker-selinux \
-                  docker-engine-selinux \
-                  docker-engine</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> yum remove docker \<br>                  docker-client \<br>                  docker-client-latest \<br>                  docker-common \<br>                  docker-latest \<br>                  docker-latest-logrotate \<br>                  docker-logrotate \<br>                  docker-selinux \<br>                  docker-engine-selinux \<br>                  docker-engine<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li>安装依赖包</li>
 </ul>
-<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> yum install -y yum-utils</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> yum install -y yum-utils<br></code></pre></td></tr></table></figure>
 
 <p>报错了，可能是镜像源的问题,没报错的可以直接忽略这一步</p>
-<div class="code-wrapper"><pre><code class="hljs bash">已加载插件：fastestmirror, langpacks
-Loading mirror speeds from cached hostfile
-Could not retrieve mirrorlist http://mirrorlist.centos.org/?release=7&amp;<span class="hljs-built_in">arch</span>=x86_64&amp;repo=os&amp;infra=stock error was
-14: curl#6 - <span class="hljs-string">&quot;Could not resolve host: mirrorlist.centos.org; 未知的错误&quot;</span>
-
-
- One of the configured repositories failed (未知),
- and yum doesn<span class="hljs-string">&#x27;t have enough cached data to continue. At this point the only</span>
-<span class="hljs-string"> safe thing yum can do is fail. There are a few ways to work &quot;fix&quot; this:</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">     1. Contact the upstream for the repository and get them to fix the problem.</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">     2. Reconfigure the baseurl/etc. for the repository, to point to a working</span>
-<span class="hljs-string">        upstream. This is most often useful if you are using a newer</span>
-<span class="hljs-string">        distribution release than is supported by the repository (and the</span>
-<span class="hljs-string">        packages for the previous distribution release still work).</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">     3. Run the command with the repository temporarily disabled</span>
-<span class="hljs-string">            yum --disablerepo=&lt;repoid&gt; ...</span>
-<span class="hljs-string"></span>
-<span class="hljs-string">     4. Disable the repository permanently, so yum won&#x27;</span>t use it by default. Yum
-        will <span class="hljs-keyword">then</span> just ignore the repository <span class="hljs-keyword">until</span> you permanently <span class="hljs-built_in">enable</span> it
-        again or use --enablerepo <span class="hljs-keyword">for</span> temporary usage:
-
-            yum-config-manager --<span class="hljs-built_in">disable</span> &lt;repoid&gt;
-        or
-            subscription-manager repos --<span class="hljs-built_in">disable</span>=&lt;repoid&gt;
-
-     5. Configure the failing repository to be skipped, <span class="hljs-keyword">if</span> it is unavailable.
-        Note that yum will try to contact the repo. when it runs most commands,
-        so will have to try and fail each time (and thus. yum will be be much
-        slower). If it is a very temporary problem though, this is often a <span class="hljs-built_in">nice</span>
-        compromise:
-
-            yum-config-manager --save --<span class="hljs-built_in">setopt</span>=&lt;repoid&gt;.skip_if_unavailable=<span class="hljs-literal">true</span>
-
-Cannot find a valid baseurl <span class="hljs-keyword">for</span> repo: base/7/x86_64
-</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs bash">已加载插件：fastestmirror, langpacks<br>Loading mirror speeds from cached hostfile<br>Could not retrieve mirrorlist http://mirrorlist.centos.org/?release=7&amp;<span class="hljs-built_in">arch</span>=x86_64&amp;repo=os&amp;infra=stock error was<br>14: curl#6 - <span class="hljs-string">&quot;Could not resolve host: mirrorlist.centos.org; 未知的错误&quot;</span><br><br><br> One of the configured repositories failed (未知),<br> and yum doesn<span class="hljs-string">&#x27;t have enough cached data to continue. At this point the only</span><br><span class="hljs-string"> safe thing yum can do is fail. There are a few ways to work &quot;fix&quot; this:</span><br><span class="hljs-string"></span><br><span class="hljs-string">     1. Contact the upstream for the repository and get them to fix the problem.</span><br><span class="hljs-string"></span><br><span class="hljs-string">     2. Reconfigure the baseurl/etc. for the repository, to point to a working</span><br><span class="hljs-string">        upstream. This is most often useful if you are using a newer</span><br><span class="hljs-string">        distribution release than is supported by the repository (and the</span><br><span class="hljs-string">        packages for the previous distribution release still work).</span><br><span class="hljs-string"></span><br><span class="hljs-string">     3. Run the command with the repository temporarily disabled</span><br><span class="hljs-string">            yum --disablerepo=&lt;repoid&gt; ...</span><br><span class="hljs-string"></span><br><span class="hljs-string">     4. Disable the repository permanently, so yum won&#x27;</span>t use it by default. Yum<br>        will <span class="hljs-keyword">then</span> just ignore the repository <span class="hljs-keyword">until</span> you permanently <span class="hljs-built_in">enable</span> it<br>        again or use --enablerepo <span class="hljs-keyword">for</span> temporary usage:<br><br>            yum-config-manager --<span class="hljs-built_in">disable</span> &lt;repoid&gt;<br>        or<br>            subscription-manager repos --<span class="hljs-built_in">disable</span>=&lt;repoid&gt;<br><br>     5. Configure the failing repository to be skipped, <span class="hljs-keyword">if</span> it is unavailable.<br>        Note that yum will try to contact the repo. when it runs most commands,<br>        so will have to try and fail each time (and thus. yum will be be much<br>        slower). If it is a very temporary problem though, this is often a <span class="hljs-built_in">nice</span><br>        compromise:<br><br>            yum-config-manager --save --<span class="hljs-built_in">setopt</span>=&lt;repoid&gt;.skip_if_unavailable=<span class="hljs-literal">true</span><br><br>Cannot find a valid baseurl <span class="hljs-keyword">for</span> repo: base/7/x86_64<br><br></code></pre></td></tr></table></figure>
 
 <p>配置阿里云yum源</p>
 <p>去到yum的仓库源目录</p>
-<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /etc/yum.repos.d</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /etc/yum.repos.d<br></code></pre></td></tr></table></figure>
 
 <p>利用wget下载阿里云镜像源配置文件</p>
-<div class="code-wrapper"><pre><code class="hljs bash">wget http://mirrors.aliyun.com/repo/Centos-7.repo</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget http://mirrors.aliyun.com/repo/Centos-7.repo<br></code></pre></td></tr></table></figure>
 
 <p>备份原来的</p>
-<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">mv</span> CentOS-Base.repo CentOS-Base.repo.bak</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mv</span> CentOS-Base.repo CentOS-Base.repo.bak<br></code></pre></td></tr></table></figure>
 
 <p>用刚才下载的替换</p>
-<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">mv</span> Centos-7.repo CentOS-Base.repo</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mv</span> Centos-7.repo CentOS-Base.repo<br></code></pre></td></tr></table></figure>
 
 <p>清除缓存更新</p>
-<div class="code-wrapper"><pre><code class="hljs bash">yum clean all
-yum makecache
-yum update</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum clean all<br>yum makecache<br>yum update<br></code></pre></td></tr></table></figure>
 
 <p>完成后再次安装依赖包</p>
-<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> yum install -y yum-utils</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> yum install -y yum-utils<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li>切换docker的yum镜像源为阿里云仓库</li>
 </ul>
-<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> yum-config-manager \
-    --add-repo \
-    https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
-
-<span class="hljs-built_in">sudo</span> sed -i <span class="hljs-string">&#x27;s/download.docker.com/mirrors.aliyun.com\/docker-ce/g&#x27;</span> /etc/yum.repos.d/docker-ce.repo</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> yum-config-manager \<br>    --add-repo \<br>    https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo<br><br><span class="hljs-built_in">sudo</span> sed -i <span class="hljs-string">&#x27;s/download.docker.com/mirrors.aliyun.com\/docker-ce/g&#x27;</span> /etc/yum.repos.d/docker-ce.repo<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li>正式安装docker</li>
 </ul>
-<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> yum install docker-ce docker-ce-cli containerd.io</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> yum install docker-ce docker-ce-cli containerd.io<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li>执行docker version验证是否安装完成</li>
@@ -397,8 +345,7 @@ yum update</code></pre></div>
 <blockquote>
 <p>Cannot connect to the Docker daemon at unix:&#x2F;&#x2F;&#x2F;var&#x2F;run&#x2F;docker.sock. Is the docker daemon running?表示docker未启动</p>
 </blockquote>
-<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> systemctl <span class="hljs-built_in">enable</span> docker
-<span class="hljs-built_in">sudo</span> systemctl start docker</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> systemctl <span class="hljs-built_in">enable</span> docker<br><span class="hljs-built_in">sudo</span> systemctl start docker<br></code></pre></td></tr></table></figure>
 
 <p>再次运行docker version即可看见更详细的内容</p>
 <blockquote>
@@ -408,7 +355,7 @@ yum update</code></pre></div>
 <ul>
 <li>测试运行是否正常，使用hello world镜像</li>
 </ul>
-<div class="code-wrapper"><pre><code class="hljs bash">docker run --<span class="hljs-built_in">rm</span> hello-world</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run --<span class="hljs-built_in">rm</span> hello-world<br></code></pre></td></tr></table></figure>
 
 <p>报错了（没报错可以跳过）</p>
 <blockquote>
@@ -418,32 +365,17 @@ yum update</code></pre></div>
 <p>需要切换成国内有效的镜像源参考网站：<a target="_blank" rel="noopener" href="https://status.1panel.top/status/docker">https://status.1panel.top/status/docker</a></p>
 <p>配置后可以执行docker pull 但是docker search还是不行，可以去下面的网站找docker镜像：<a target="_blank" rel="noopener" href="https://docker.fxxk.dedyn.io/">https://docker.fxxk.dedyn.io/</a></p>
 <p>新增配置文件</p>
-<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> vi /etc/docker/daemon.json</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> vi /etc/docker/daemon.json<br></code></pre></td></tr></table></figure>
 
 <p>编辑内容</p>
-<div class="code-wrapper"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span>
-    <span class="hljs-attr">&quot;registry-mirrors&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
-        <span class="hljs-string">&quot;https://docker.m.daocloud.io&quot;</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-string">&quot;https://docker.1panel.live&quot;</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-string">&quot;https://hub.rat.dev&quot;</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-string">&quot;https://hub.xdark.top&quot;</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-string">&quot;https://hub.littlediary.cn&quot;</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-string">&quot;https://dockerpull.org&quot;</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-string">&quot;https://hub.crdz.gq&quot;</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-string">&quot;https://docker.unsee.tech&quot;</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-string">&quot;https://registry.dockermirror.com&quot;</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-string">&quot;https://docker.m.daocloud.io&quot;</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-string">&quot;https://docker.ketches.cn&quot;</span><span class="hljs-punctuation">,</span>
-        <span class="hljs-string">&quot;https://docker.1ms.run&quot;</span>
-    <span class="hljs-punctuation">]</span>
-<span class="hljs-punctuation">&#125;</span></code></pre></div>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;registry-mirrors&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-string">&quot;https://docker.m.daocloud.io&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;https://docker.1panel.live&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;https://hub.rat.dev&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;https://hub.xdark.top&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;https://hub.littlediary.cn&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;https://dockerpull.org&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;https://hub.crdz.gq&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;https://docker.unsee.tech&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;https://registry.dockermirror.com&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;https://docker.m.daocloud.io&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;https://docker.ketches.cn&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;https://docker.1ms.run&quot;</span><br>    <span class="hljs-punctuation">]</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
 
 <p>esc退出编辑模式:wq!保存</p>
 <p>重启docker</p>
-<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> service docker restart</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> service docker restart<br></code></pre></td></tr></table></figure>
 
 <p>再次执行</p>
-<div class="code-wrapper"><pre><code class="hljs bash">docker run --<span class="hljs-built_in">rm</span> hello-world</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run --<span class="hljs-built_in">rm</span> hello-world<br></code></pre></td></tr></table></figure>
 
 <p>成功运行</p>
 <blockquote>
@@ -463,13 +395,12 @@ yum update</code></pre></div>
 <li>docker的命令</li>
 </ul>
 <p>docker search 搜索镜像</p>
-<div class="code-wrapper"><pre><code class="hljs bash">docker search mysql</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker search mysql<br></code></pre></td></tr></table></figure>
 
 <p>docker pull 拉取镜像</p>
 <p>也可以通过指定镜像的tag来拉取指定版本的镜像</p>
 <p>没有指定tag默认为:latest</p>
-<div class="code-wrapper"><pre><code class="hljs bash">docker pull mysql <span class="hljs-comment">#默认拉取最新版mysql:latest</span>
-docker pull mysql:5.7 <span class="hljs-comment">#通过tag指定版本</span></code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker pull mysql <span class="hljs-comment">#默认拉取最新版mysql:latest</span><br>docker pull mysql:5.7 <span class="hljs-comment">#通过tag指定版本</span><br></code></pre></td></tr></table></figure>
 
 <p>docker images 查看镜像列表</p>
 <blockquote>
@@ -478,9 +409,7 @@ docker pull mysql:5.7 <span class="hljs-comment">#通过tag指定版本</span></
 <p>可以查看镜像源、版本、镜像id、创建时间、和大小等信息</p>
 <p>docker rmi 删除镜像</p>
 <p>可以通过镜像名称、或者镜像id来删除镜像</p>
-<div class="code-wrapper"><pre><code class="hljs bash">docker rmi mysql <span class="hljs-comment">#只删除mysql:latest</span>
-docker rmi mysql:5.7
-docker rmi d2c94e258dcb <span class="hljs-comment">#根据镜像id删除</span></code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker rmi mysql <span class="hljs-comment">#只删除mysql:latest</span><br>docker rmi mysql:5.7<br>docker rmi d2c94e258dcb <span class="hljs-comment">#根据镜像id删除</span><br></code></pre></td></tr></table></figure>
 
 <p>docker run</p>
 <blockquote>
@@ -550,26 +479,24 @@ docker rmi d2c94e258dcb <span class="hljs-comment">#根据镜像id删除</span><
 <p>查看容器的元数据信息 docker inspect</p>
 <p>以交互的形式进入当前正在运行的容器(会开启一个新的交互终端)docker exec -it 容器id&#x2F;容器名称 需要执行的命令</p>
 <p>比如进入mysql</p>
-<div class="code-wrapper"><pre><code class="hljs bash">docker <span class="hljs-built_in">exec</span> -it mysql-container mysql -u root -p</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker <span class="hljs-built_in">exec</span> -it mysql-container mysql -u root -p<br></code></pre></td></tr></table></figure>
 
 <p>进入容器正在运行的终端docker attach 容器id&#x2F;容器名称</p>
 <p>容器与本机文件直接的拷贝docker cp </p>
-<div class="code-wrapper"><pre><code class="hljs bash">docker <span class="hljs-built_in">cp</span> /path/on/host my_container:/path/in/container <span class="hljs-comment">#将本机文件/path/on/host拷贝到容器my_container的/path/in/container路径下</span>
-docker <span class="hljs-built_in">cp</span> my_container:/path/in/container /path/on/host <span class="hljs-comment">#反过来就是把容器内的文件拷贝到本机</span>
-<span class="hljs-comment">#不需要容器正在运行也可以进行拷贝，容器的路径格式为container-name:/path</span></code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker <span class="hljs-built_in">cp</span> /path/on/host my_container:/path/in/container <span class="hljs-comment">#将本机文件/path/on/host拷贝到容器my_container的/path/in/container路径下</span><br>docker <span class="hljs-built_in">cp</span> my_container:/path/in/container /path/on/host <span class="hljs-comment">#反过来就是把容器内的文件拷贝到本机</span><br><span class="hljs-comment">#不需要容器正在运行也可以进行拷贝，容器的路径格式为container-name:/path</span><br></code></pre></td></tr></table></figure>
 
 <ul>
 <li>练习：利用docker部署tomcat</li>
 </ul>
 <p>首先拉取镜像</p>
-<div class="code-wrapper"><pre><code class="hljs bash">docker pull tomcat</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker pull tomcat<br></code></pre></td></tr></table></figure>
 
 <p>运行容器</p>
-<div class="code-wrapper"><pre><code class="hljs bash">docker run -d --name test-tomcat -p 8080:8080 tomcat <span class="hljs-comment">#表示后台运行一个容器名称为‘test-tomcat’的tomcat镜像，并且将本机的8080端口映射到容器的8080端口</span></code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -d --name test-tomcat -p 8080:8080 tomcat <span class="hljs-comment">#表示后台运行一个容器名称为‘test-tomcat’的tomcat镜像，并且将本机的8080端口映射到容器的8080端口</span><br></code></pre></td></tr></table></figure>
 
 <p>外部浏览器访问：虚拟机ip:8080 192.168.154.128:8080结果发现是404</p>
 <p>进入容器内部查看原因</p>
-<div class="code-wrapper"><pre><code class="hljs bash">docker <span class="hljs-built_in">exec</span> -it test-tomcat /bin/bash</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker <span class="hljs-built_in">exec</span> -it test-tomcat /bin/bash<br></code></pre></td></tr></table></figure>
 
 <p>利用ls命令查看文件内容可以看见熟习的tomcat文件结构</p>
 <blockquote>
@@ -581,17 +508,13 @@ docker <span class="hljs-built_in">cp</span> my_container:/path/in/container /pa
 <p>docs  examples  host-manager  manager  ROOT</p>
 </blockquote>
 <p>利用命令将webapps.dist目录下的文件及其子目录下的文件都复制过去用cp 参数-r来实现</p>
-<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">cp</span> -r ./wabapps.dist/* ./wabapps</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cp</span> -r ./wabapps.dist/* ./wabapps<br></code></pre></td></tr></table></figure>
 
 <p>再次访问192.168.154.128:8080就成功了</p>
 <ul>
 <li>练习，利用docker部署elasticsearch，并限制内存</li>
 </ul>
-<div class="code-wrapper"><pre><code class="hljs bash">docker run -d --name elasticsearch \
-  -p 9200:9200 -p 9300:9300 \
-  -e <span class="hljs-string">&quot;discovery.type=single-node&quot;</span> \
-  -e <span class="hljs-string">&quot;ES_JAVA_OPTS=-Xms128m -Xmx512m&quot;</span> \
-  elasticsearch:7.6.2</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -d --name elasticsearch \<br>  -p 9200:9200 -p 9300:9300 \<br>  -e <span class="hljs-string">&quot;discovery.type=single-node&quot;</span> \<br>  -e <span class="hljs-string">&quot;ES_JAVA_OPTS=-Xms128m -Xmx512m&quot;</span> \<br>  elasticsearch:7.6.2<br></code></pre></td></tr></table></figure>
 
 <p>注意：elasticsearch貌似没有latest的tag所以pull的时候要指定版本</p>
 <p>访问： curl localhost:9200</p>
@@ -601,8 +524,7 @@ docker <span class="hljs-built_in">cp</span> my_container:/path/in/container /pa
 <p>部署成功</p>
 <ul>
 <li><p>安装图形化界面portainer</p>
-<div class="code-wrapper"><pre><code class="hljs bash">docker run -d -p 8088:9000 \
---restart=always -v /var/run/docker.sock:/var/run/docker.sock --privileged=<span class="hljs-literal">true</span> portainer/portainer</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -d -p 8088:9000 \<br>--restart=always -v /var/run/docker.sock:/var/run/docker.sock --privileged=<span class="hljs-literal">true</span> portainer/portainer<br></code></pre></td></tr></table></figure>
 
 <p>开放在8088端口</p>
 </li>
@@ -615,20 +537,15 @@ docker <span class="hljs-built_in">cp</span> my_container:/path/in/container /pa
 <li><p>数据挂载 -v</p>
 <p>可以通过数据挂载，将容器中的文件挂载到容器外，这样即使容器被删了数据也不会消失</p>
 <p>-v 本机路径:容器内路径</p>
-<div class="code-wrapper"><pre><code class="hljs bash">docker run -v /home/test:/home centos <span class="hljs-comment">#将centos容器中的/home目录中的文件挂载到本机/home/test目录下</span></code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -v /home/test:/home centos <span class="hljs-comment">#将centos容器中的/home目录中的文件挂载到本机/home/test目录下</span><br></code></pre></td></tr></table></figure>
 
 </li>
 <li><p>练习：部署mysql</p>
-<div class="code-wrapper"><pre><code class="hljs bash">docker run -d -p 3306:3306 \
--e MYSQL_ROOT_PASSWORD=123456 \
--v /home/mysql/conf:/etc/mysql/conf.d \
--v /home/mysql/data:/var/lib/mysql mysql <span class="hljs-comment">#分别将mysql配置和数据挂载到本地通过-e配置环境设置root密码</span></code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -d -p 3306:3306 \<br>-e MYSQL_ROOT_PASSWORD=123456 \<br>-v /home/mysql/conf:/etc/mysql/conf.d \<br>-v /home/mysql/data:/var/lib/mysql mysql <span class="hljs-comment">#分别将mysql配置和数据挂载到本地通过-e配置环境设置root密码</span><br></code></pre></td></tr></table></figure>
 
 <p>具名挂载和匿名挂载</p>
 <p>在挂载数据卷的时候可以为数据卷指定名字后续可以在docker volume ls中看到</p>
-<div class="code-wrapper"><pre><code class="hljs bash">-v /容器内路径 <span class="hljs-comment">#匿名挂载</span>
--v 卷名:/容器内路径 <span class="hljs-comment">#具名挂载</span>
--v /宿主机路径://容器内路径 <span class="hljs-comment">#具体路径挂载</span></code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">-v /容器内路径 <span class="hljs-comment">#匿名挂载</span><br>-v 卷名:/容器内路径 <span class="hljs-comment">#具名挂载</span><br>-v /宿主机路径://容器内路径 <span class="hljs-comment">#具体路径挂载</span><br></code></pre></td></tr></table></figure>
 
 <p>也可以通过docker volume inspect &lt;卷名&gt;来查看卷的具体信息</p>
 <p>共享容器的数据卷</p>
@@ -636,32 +553,15 @@ docker <span class="hljs-built_in">cp</span> my_container:/path/in/container /pa
 </li>
 <li><p>docker部署Reids</p>
 <p>先创建本地的数据目录</p>
-<div class="code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> /data/redis</code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> /data/redis<br></code></pre></td></tr></table></figure>
 
 <p>部署命令</p>
-<div class="code-wrapper"><pre><code class="hljs bash">docker run \
---restart=always \
--d \
---name redis-container \
--p 6379:6379 \
--v /data/redis:/data \
-redis:latest \
-redis-server --appendonly <span class="hljs-built_in">yes</span> \
---requirepass <span class="hljs-string">&quot;123456&quot;</span></code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run \<br>--restart=always \<br>-d \<br>--name redis-container \<br>-p 6379:6379 \<br>-v /data/redis:/data \<br>redis:latest \<br>redis-server --appendonly <span class="hljs-built_in">yes</span> \<br>--requirepass <span class="hljs-string">&quot;123456&quot;</span><br></code></pre></td></tr></table></figure>
 
-<div class="code-wrapper"><pre><code class="hljs bash">docker run \
---restart=always \ <span class="hljs-comment">#开机启动</span>
--d \ <span class="hljs-comment">#后台运行</span>
---name redis-container \ <span class="hljs-comment">#命名容器为redis-container</span>
--p 6379:6379 \ <span class="hljs-comment">#端口映射</span>
--v /data/redis:/data \ <span class="hljs-comment">#将数据挂载到本地</span>
-redis:latest \ <span class="hljs-comment">#指定版本</span>
-redis-server --appendonly <span class="hljs-built_in">yes</span> \ <span class="hljs-comment">#开启AOF持久化</span>
---requirepass <span class="hljs-string">&quot;123456&quot;</span> <span class="hljs-comment">#设置密码</span></code></pre></div>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run \<br>--restart=always \ <span class="hljs-comment">#开机启动</span><br>-d \ <span class="hljs-comment">#后台运行</span><br>--name redis-container \ <span class="hljs-comment">#命名容器为redis-container</span><br>-p 6379:6379 \ <span class="hljs-comment">#端口映射</span><br>-v /data/redis:/data \ <span class="hljs-comment">#将数据挂载到本地</span><br>redis:latest \ <span class="hljs-comment">#指定版本</span><br>redis-server --appendonly <span class="hljs-built_in">yes</span> \ <span class="hljs-comment">#开启AOF持久化</span><br>--requirepass <span class="hljs-string">&quot;123456&quot;</span> <span class="hljs-comment">#设置密码</span><br></code></pre></td></tr></table></figure>
 
 <p>进入容器内通过客户端连接</p>
-<div class="code-wrapper"><pre><code class="hljs bash">docker <span class="hljs-built_in">exec</span> -it redis-container redis-cli
-auth 123456</code></pre></div></li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker <span class="hljs-built_in">exec</span> -it redis-container redis-cli<br>auth 123456<br></code></pre></td></tr></table></figure></li>
 </ul>
 
                 
